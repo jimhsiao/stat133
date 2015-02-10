@@ -1,0 +1,5 @@
+name = "Jim (Yuan Chun) Hsiao"
+SID = "24580134"
+email = "jimhsiao95@gmail.com/jimhsiao@berkeley.edu"
+github_name = "jimhsiao"
+status = "enrolled"
