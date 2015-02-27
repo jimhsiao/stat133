@@ -411,5 +411,5 @@ barplot(orderSport,beside = TRUE)
 
 # This was the final version of the 4th plot.
 barplot(orderSport, main = "Number of Participants in Olympic Sports", cex.names = 0.5, las = 2)
-# You are DONE.
+  # You are DONE.
 # Hope you had fun making increasingly complex and attractive plots with R.
