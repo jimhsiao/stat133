@@ -1,0 +1,23 @@
+{
+    "login": "jimhsiao", 
+    "url": "git@github.com:jimhsiao/stat133.git", 
+    "name": "Jim (Yuan Chun) Hsiao", 
+    "email": "jimhsiao95@gmail.com/jimhsiao@berkeley.edu", 
+    "github_name": "jimhsiao", 
+    "status": "enrolled", 
+    "grades": {
+        "hw1": {
+            "note": "", 
+            "hash": "1c5ab3ec61bd9a7ebf7110c9e5cfb1d39a687b21", 
+            "earned": 18, 
+            "possible": 20, 
+            "penalty": 0, 
+            "parts": {
+                "hw1": {
+                    "possible": 20, 
+                    "earned": 18
+                }
+            }
+        }
+    }
+}
