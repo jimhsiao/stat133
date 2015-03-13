@@ -10,7 +10,7 @@
 bml.init <- function(r, c, p){
 
   
-   #return(m)
+   
 }
 
 #### Function to move the system one step (east and north)
