@@ -42,17 +42,9 @@ subset.threesilver.pop <- subset.threesilver[, c("pop")]
 # whose values in <GDPPP> are strictly less that <GDPPP.cutoff>.
 
 meanpopByGDPPP <- function(GDPPP.cutoff, GDPPP, pop){
- sumSoFar = 0
- total = 0
- temp$GDPPP = GDPPP
- temp$pop = pop
- for (element in temp) {
-   if (element$GDPPP < GDPPP.cutoff) {
-     sumSoFar = sumSoFar + element$pop
-     total = total + 1
-   }
- }
- return(sumSoFar / total)
+  subset.indices <- GDPPP < GDPPP.cutoff
+  subset.avg <- mean(pop[subset.indices], na.rm = T)
+  return(subset.avg)
 }
 
 # Please create a plot of the proportion of female athletes (y-axis) 
