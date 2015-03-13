@@ -63,5 +63,5 @@ meanpopByGDPPP <- function(GDPPP.cutoff, GDPPP, pop){
 # 3) plotting character set to 19
 # 4) a green horizontal line at female proportion of 0.50.
 
-plot((SO2012Ctry$Female + SO2012Ctry$Male), SO2012Ctry$Female/(SO2012Ctry$Female + SO2012Ctry$Male), main = "Proportion of female athletes vs Total # athletes", ylab = "Proportion of female athletes", xlab = "Total # of athletes")
+plot((SO2012Ctry$Female + SO2012Ctry$Male), SO2012Ctry$Female/(SO2012Ctry$Female + SO2012Ctry$Male), main = "Proportion of female athletes vs Total # athletes", ylab = "Proportion of female athletes", xlab = "Total # of athletes", pch = 20)
 abline(h = 0.5, col = "green")
