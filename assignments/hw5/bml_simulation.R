@@ -8,3 +8,17 @@
 #### how many steps you observered before concluding that it is in a free flowing state.
 
 
+source("bml_functions.r")
+bml.sim(100,100,0.2)
+bml.sim(100,100,0.2)
+
+bml.sim(100,100,0.8)
+bml.sim(100,100,0.8)
+
+bml.sim(50,50, 0.6)
+bml.sim(10,10, 0.6)
+bml.sim(5,10,0.6)
+bml.sim(10,5,0.6)
+
+
+
