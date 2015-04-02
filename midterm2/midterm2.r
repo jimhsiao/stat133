@@ -155,9 +155,9 @@ sd.cache <- unlist(lapply(Cache500, function(x){sd(x)}))
 # the mean of Cache500[[i]] IF it has 50 or more entries.
 # NA IF Cache500[[i]] has less than 50 entries.
 
+
 mean.long.cache <- sapply(1:length(mean.cache), function(x){
-  ifelse(length(Cache500[[x]]) >= 50, mean.cache[x], NA)
-})
+  ifelse(length(Cache500[[x]]) >= 50, mean.cache[x], NA)})
 
 
 
