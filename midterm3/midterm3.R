@@ -9,6 +9,16 @@
 #   <num.dollar>: an integer indicating how many elements of <chvec> contain the "$"
 #     symbol. For example: numDollarElements(c('dollar', 'd$llar', '$$$')) should return 2
 
+numDollarElements <- function(chvec) {
+  
+  num.dollar <- grep("\\$", chvec)
+  num.dollar <- length(num.dollar)
+  return(num.dollar)
+}
+
+numDollarElements(c("asd","$as","4","$"))
+numDollarElements(c('dollar', 'd$llar', '$$$'))
+
 
 
 # Write a function called prodDigits that compute the product of all (single) digits in
@@ -19,11 +29,21 @@
 # and return the following
 #   <total>: A single number (the product of all digits in chvec)
 
+prodDigits <- function(chvec) {
+  temp <- unlist(strsplit(chvec, ""))
+  for(i in 1:length(temp) - 1) {
+    if(temp[i] == temp[i+1]) {
+      temp[i+1] = NA
+    }
+  }
+  sum(as.numeric(grep("[0-9]", temp, value = T)))
+}
+
 
 
 # Some test cases:
-# all.equal(prodDigits("1z3p ! 22"), 12)
-# all.equal(prodDigits("abcdefg"), 0)
+all.equal(prodDigits("1z3p ! 22"), 12)
+#all.equal(prodDigits("abcdefg"), 0)
 
 # Write a function called hisToHer that converts every instance of 
 # him in a string to her; every instance of he to she and every instance 
@@ -34,6 +54,13 @@
 #
 # and return
 #   <herchvec>: The same character vector with the required substitutions.
+
+hisToHer <- function(chvec) {
+  herchvec <- gsub(" him ", " her ", chvec)
+  herchvec <- gsub(" he ", " she ", herchvec)
+  herchvec <- gsub(" him ", " her ", herchvec)
+  return(herchvec)
+}
 
 
 # A test case
@@ -55,4 +82,12 @@ all.equal(
 #  <letter> The most common letter or letters in the string.
 # For example mostCommonLetter("aabbccccdddd") should return 
 # [1] "c" "d"
+
+mostCommonLetter <- function(chvec) {
+  chvec = tolower(gsub("[0-9]+s*", "", chvec))
+  
+}
+
+
+
 
