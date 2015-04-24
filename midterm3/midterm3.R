@@ -33,7 +33,7 @@ prodDigits <- function(chvec) {
   temp <- unlist(strsplit(chvec, ""))
   for(i in 1:length(temp) - 1) {
     if(temp[i] == temp[i+1]) {
-      temp[i+1] = NA
+      temp[i+1] = "a"
     }
   }
   sum(as.numeric(grep("[0-9]", temp, value = T)))
@@ -43,7 +43,7 @@ prodDigits <- function(chvec) {
 
 # Some test cases:
 all.equal(prodDigits("1z3p ! 22"), 12)
-#all.equal(prodDigits("abcdefg"), 0)
+all.equal(prodDigits("abcdefg"), 0)
 
 # Write a function called hisToHer that converts every instance of 
 # him in a string to her; every instance of he to she and every instance 

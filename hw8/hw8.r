@@ -18,6 +18,8 @@ genBootY = function(x, y, rep = TRUE){
   ### Return a vector of random y values the same length as y
   ### You can assume that the xs are sorted
   ### Hint use tapply here!
+  yVecs <- unlist(tapply(y, x, function(i) sample(i, length(i), replace = TRUE)))
+  return(yVecs)
   
 
 }
@@ -27,7 +29,8 @@ genBootR = function(fit, err, rep = TRUE){
   ### Add the errors to the fit to create a y vector
   ### Return a vector of y values the same length as fit
   ### HINT: It can be easier to sample the indices than the values
-  
+  errVec <- sample(err, replace = FALSE)
+  return(fit + errVec)
  
 }
 
@@ -37,9 +40,12 @@ fitModel = function(x, y, degree = 1){
   ### y and x are numeric vectors of the same length
   ### Return the coefficients as a vector 
   ### HINT: Take a look at the repBoot function to see how to use lm()
-  
- 
-  return(coeff)
+  if(degree == 1) {
+    mid <- lm(y ~ x)
+  } else {
+    mid <- lm(y ~ x + I(x^2))
+  }
+  return(coefficients(mid))
 }
 
 oneBoot = function(data, fit = NULL, degree = 1){
@@ -49,6 +55,14 @@ oneBoot = function(data, fit = NULL, degree = 1){
 
  
   ### Use fitModel to fit a model to this bootstrap Y 
+  x <- data$x
+  y <- data$y
+  if (is.null(fit)) {
+    temp = genBootY(x,y)
+  } else {
+    temp = genBootR(fit, y - fit)
+  }
+  return(fitModel(x, temp, degree = degree))
  
 }
 
@@ -65,18 +79,17 @@ repBoot = function(data, B = 1000){
   ### fit is for a line or a quadratic
   ### Return this list
   
-  ### Replicate a call to oneBoot B times for 
-  ### each of the four conditions
+  fit1 <- lm (y~x, data = data)$fitted
+  fit2 <- lm (y ~ x + I(x^2), data = data)$fitted
   
+  sim1 <- replicate(B, oneBoot(data = data, fit1, 1))
+  sim2 <- replicate(B, oneBoot(data = data, fit2, 2))
+  sim3 <- replicate(B, oneBoot(data = data, NULL, 1))
+  sim4 <- replicate(B, oneBoot(data = data, NULL, 2))
   
-  ### Format the return value so that you have a list of
-  ### length 4, one for each set of coefficients
-  ### each element will contain a matrix with B columns
-  ### and two or three rows, depending on whether the 
-  ### fit is for a line or a quadratic
-  ### Return this list
-  
-  return(coeff)
+  temp = list(sim1, sim2, sim3, sim4)
+  temp = matrix(temp, ncol = 4)
+  return(temp)
 } 
 
 bootPlot = function(x, y, coeff, trueCoeff){
@@ -96,7 +109,18 @@ bootPlot = function(x, y, coeff, trueCoeff){
   
   ### Use trueCoeff to add true line/curve - 
   ###  Make the true line/curve stand out
-
+  
+  plot(x, y, type = "p", col = rgb(0, 0, 1))
+  if(ncol(coeff) == 2) {
+    mapply(function(x,y) abline(a = x, b = y, col = rgb(0, 0, 0, 0.05)), coeff[,1], coeff[,2])
+  } else {
+    mapply(function(a, b, c) curve(a(x^2) + b*x + c, add = TRUE, col = rgb(0, 0, 0, 0.05)), coeff[,3], coeff[,2], coeff[,1])
+  }
+  a <- trueCoeff[3]
+  b <- trueCoeff[2]
+  c <- trueCoeff[1]
+  curve(a*(x^2) + b*x + c, add = TRUE, col = rgb(1,0,0))
+  
 }
 
 ### Run your simulation by calling this function
