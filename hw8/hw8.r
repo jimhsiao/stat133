@@ -114,7 +114,7 @@ bootPlot = function(x, y, coeff, trueCoeff){
   if(ncol(coeff) == 2) {
     mapply(function(x,y) abline(a = x, b = y, col = rgb(0, 0, 0, 0.05)), coeff[,1], coeff[,2])
   } else {
-    mapply(function(a, b, c) curve(a(x^2) + b*x + c, add = TRUE, col = rgb(0, 0, 0, 0.05)), coeff[,3], coeff[,2], coeff[,1])
+    mapply(function(a, b, c) curve(a*(x^2) + b*x + c, add = TRUE, col = rgb(0, 0, 0, 0.05)), coeff[,3], coeff[,2], coeff[,1])
   }
   a <- trueCoeff[3]
   b <- trueCoeff[2]
