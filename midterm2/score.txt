@@ -1,0 +1,5 @@
+f2: >= 72   -1
+line 107: wrong color option  -1
+line 113  -2
+
+Score: 29/33
