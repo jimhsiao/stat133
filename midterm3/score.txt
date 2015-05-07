@@ -1,0 +1,17 @@
+Total: 13/20
+
+Function 1
+5/5
+
+Function 2
+3/5
+If you comment out the for loop and change sum to prod in line 39 it works.
+
+Function 3
+4/5
+Some cases are missed e.g. hisToHer(“he was early”) -> “he was early”
+
+Function 4
+1/5
+Good start. 
+
