@@ -209,7 +209,7 @@ abline(v = 2.1)
 # Please redo the plot, but this time put two plots side by side (hint: before plotting set par(mfrow=...) )
 # The left plot should include only data from 1960, the right one only from 2014.
 par(mfrow = c(1, 2))
-for(i in (1960, 2014)) {
+for(i in c(1960, 2013)) { #Andy
   plot(x = WorldBank$fertility.rate[WorldBank$year == i], 
        y = WorldBank$life.expectancy[WorldBank$year == i], 
        pch = ".", xlab = "Fertility rate", 
@@ -416,8 +416,8 @@ numJackpot <- function(k, B){
 # Plot a histogram of the output from NumJackpot (i.e. four histograms)
 
 par(mfrow=c(2,2))
-for(i in (10000, 50000, 100000, 500000)) {
-  hist(numJackpot(i, 5000))
+for(i in c(100, 500, 1000, 5000)) { #andy
+  hist(numJackpot(i, 50))
 }
 
 #################################################################
