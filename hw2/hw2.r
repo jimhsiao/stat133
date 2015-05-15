@@ -72,7 +72,7 @@ wr.name <- wr1500m[which(wr1500m$times == min(wr1500m[, "times"])),c(4)]
 # Let's look at the relationship between date and time.
 # Q1c. What type of variable (numeric (continuous or discrete), nominal ordinal)
 # are year and times? (no need to save the output, just look at it)
-They are numeric.
+# They are numeric.
 class(wr1500m[1,1])
 class(wr1500m[3,1])
 
@@ -225,7 +225,7 @@ plot(SO2012Ctry$GDP, SO2012Ctry$pop)
 # Then add the non-medal countries to the plot using the "." 
 # plotting character.
 temp = subset(SO2012Ctry, SO2012Ctry$Total > 0)
-temp1 = subset(SO2012Ctry, SO2012Ctry$Total = 0)
+temp1 = subset(SO2012Ctry, SO2012Ctry$Total == 0)
 symbols(log(temp$GDP), log(temp$pop), temp$Total)
 points(log(temp1$GDP), log(temp1$pop))
 
@@ -238,7 +238,7 @@ points(log(temp1$GDP), log(temp1$pop))
 # top5 <- order( your code here )
 # your plotting code here, including a new call to text()
 temp = subset(SO2012Ctry, SO2012Ctry$Total > 0)
-temp1 = subset(SO2012Ctry, SO2012Ctry$Total = 0)
+temp1 = subset(SO2012Ctry, SO2012Ctry$Total == 0)
 symbols(log(temp$GDP), log(temp$pop), temp$Total, main = "Medals Won by Countries", xlab = "GDP", ylab = "Population")
 points(log(temp1$GDP), log(temp1$pop))
 SO2012Ctry <- SO2012Ctry[order(SO2012Ctry$Total, decreasing = TRUE) ,]
@@ -255,7 +255,7 @@ text(log(top5$GDP), log(top5$pop), top5$ISO)
 # where the countries are filled with a light grey color.
 
 ## you only need to run these two lines once:
-install.packages("maps")
+#install.packages("maps")
 library("maps")
 
 world <- map("world", fill = TRUE, col = 8)
@@ -288,7 +288,7 @@ symbols(wonMedal$longitude, wonMedal$latitude, wonMedal$Total, add = TRUE)
 # e.g. myColor = "#FEB24CAA" or   "#FEB24C88"
 
 # You only need to call these two lines once:
-install.packages("RColorBrewer")
+# install.packages("RColorBrewer")
 library("RColorBrewer")
 
 display.brewer.all()
