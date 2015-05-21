@@ -58,7 +58,9 @@ load("London2012ALL_ATHLETES.rda")
 # The time (in the column "times") in these data are recorded in seconds, 
 # and they are seconds over 3 minutes. 
 # So a time of 70 is really 4 minutes and 10 seconds.
-View(wr1500m)
+
+                                        # View(wr1500m)
+
 # Q1a. How many world records does this data frame contain?
 n.wr <- nrow(wr1500m)
 
@@ -73,8 +75,8 @@ wr.name <- wr1500m[which(wr1500m$times == min(wr1500m[, "times"])),c(4)]
 # Q1c. What type of variable (numeric (continuous or discrete), nominal ordinal)
 # are year and times? (no need to save the output, just look at it)
 # They are numeric.
-class(wr1500m[1,1])
-class(wr1500m[3,1])
+#class(wr1500m[1,1])
+#class(wr1500m[3,1])
 
 
 # When we are examining a variable to see how it changes in time,
@@ -183,12 +185,12 @@ load("SummerOlympics2012Ctry.rda")
 
 ### GDP : double
 ### population : integer
-typeof(SO2012Ctry$GDP)
-typeof(SO2012Ctry$pop)
+#typeof(SO2012Ctry$GDP)
+#typeof(SO2012Ctry$pop)
 
 # What about Total?
 ### Total : integer
-typeof(SO2012Ctry$Total)
+#typeof(SO2012Ctry$Total)
 
 
 # To examine the relationship between these three variables,
@@ -320,17 +322,17 @@ load("London2012ALL_ATHLETES.rda")
 
 #Q13. We are interested in the relationship between Sport and Sex. 
 # Examine the data frame and check which type of data each variable is.
-names(athletes)
+#names(athletes)
 ### Name : String
 ### Sex : character
 ### Sport : String
 ### Country : String
 ### MoreThan1Sport : logical
-typeof(athletes$Name)
-typeof(athletes$Sex)
-typeof(athletes$Sport)
-typeof(athletes$Country)
-typeof(athletes$MoreThan1Sport)
+#typeof(athletes$Name)
+#typeof(athletes$Sex)
+#typeof(athletes$Sport)
+#typeof(athletes$Country)
+#typeof(athletes$MoreThan1Sport)
 
 # The table() and sum() functions might be helpful for answering 
 # some of the questions below. 
